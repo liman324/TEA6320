@@ -4,7 +4,7 @@
 #ifndef TEA6320_H
 #define TEA6320_H
 
-#define TEA6320_address 0x80
+#define TEA6320_address 0x40
 
 //Sub addresses
 #define TEA6320_VOL_LOUDNESS   0b00000000
