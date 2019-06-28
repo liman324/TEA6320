@@ -6,7 +6,7 @@ TEA6320::TEA6320(){
 	Wire.begin();
 }
 
-void TEA6320::setVol_Loud(int vol, int loud, int mute){
+void TEA6320::setVol_Loud(int vol, int loud){
   switch (vol) {
         case 20: vol =  0b00111111;break;
         case 19: vol =  0b00111110;break;
@@ -65,12 +65,7 @@ void TEA6320::setVol_Loud(int vol, int loud, int mute){
         case 1: loud = 0b01000000;break;
         case 0: loud = 0b00000000;break;
   }
-  switch (mute) {
-        case 0: mute = 0b00000000;break;
-        case 1: mute = 0b10000000;break;
-  }
-
-        int vol_loud = vol + loud + mute;
+        int vol_loud = vol + loud;
      writeWire(TEA6320_VOL_LOUDNESS, vol_loud);	
   } 
 
@@ -196,14 +191,19 @@ void TEA6320::setTreb(int treb){
      writeWire(TEA6320_TREBLE, treb);	
   } 
 
-void TEA6320::setInput(int in){
+void TEA6320::setInput(int in, int mute){
     switch(in){
         case 0:  in = 0b00000111;break;
         case 1:  in = 0b00000110;break;
         case 2:  in = 0b00000101;break;
         case 3:  in = 0b00000100;break;
   }
-      writeWire(TEA6320_INPUT, in);	
+    switch (mute) {
+        case 0: mute = 0b00000000;break;
+        case 1: mute = 0b10000000;break;
+  }   
+      int input = in + mute;
+      writeWire(TEA6320_INPUT, input);	
   }
 
 
