@@ -21,16 +21,16 @@ class TEA6320
 {
   public:
     TEA6320();
-	void setVol_Loud(int vol, int loud, int mute);  
+	void setVol_Loud(int vol, int loud);  
                         // vol = -31...+20 дБ = int -31...20
                         // loud = 0 off, 1 on
-                        // mute = 0 off, 1 on
+                        
         void setBallance(int out, int vol_out); 
                         // 0...3  FR FL RR RL
                         // -55...0 дБ = int -55...0
         void setBass(int bass); //-15...+15 дБ = int -10...10
         void setTreb(int treb); //-12...+12 дБ = int -8...8
-        void setInput(int in);  //int 0...3
+        void setInput(int in, int mute);  //int 0...3
 
   private:
 	void writeWire(char a, char b);
